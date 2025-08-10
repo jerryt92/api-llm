@@ -3,21 +3,10 @@ import json
 from config.config import *
 from utills.restUtils import printStreamResponse
 
-requestBody = {
-    "model": "qwen3-14b-mlx",
-    "messages": [
-        {
-            "content": "你名字叫“Jrag AI”\n/no_think",
-            "role": "system"
-        },
-        {
-            "content": "你是谁",
-            "role": "user"
-        }
-    ],
-    "max_tokens": 32768,
-    "stream": True
-}
+requestBody = {"messages": [{
+    "content": "你是洛城小助手，是洛城科技有限公司开发的。你是一个运行于用户Mac上，可以根据用户指令，并可以根据需要调用工具的AI助手。\n/no_think",
+    "role": "system"}, {"content": "你是谁", "role": "user"},
+], "model": "qwen-plus", "stream": True, "temperature": 0.5}
 
 
 def printOpenAiResponse(response):
@@ -38,6 +27,7 @@ def printOpenAiResponse(response):
 
 
 if __name__ == '__main__':
-    response = requests.post(baseUrl + '/v1/chat/completions', headers=headers, data=json.dumps(requestBody),
+    response = requests.post(baseUrl + '/compatible-mode/v1/chat/completions', headers=headers,
+                             json=requestBody,
                              stream=True)
     printStreamResponse(response)

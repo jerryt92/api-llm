@@ -11,5 +11,5 @@ requestBody = {
 }
 
 if __name__ == '__main__':
-    response = requests.post(baseUrl + '/v1/embeddings', headers=headers, data=json.dumps(requestBody))
+    response = requests.post(baseUrl + '/v1/embeddings', headers=headers, json=requestBody)
     printResponse(response, pretty=False)

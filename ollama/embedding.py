@@ -11,5 +11,5 @@ requestBody = {
 }
 
 if __name__ == '__main__':
-    response = requests.post(baseUrl + '/api/embed', headers=headers, data=json.dumps(requestBody))
+    response = requests.post(baseUrl + '/api/embed', headers=headers, json=requestBody)
     printResponse(response)
