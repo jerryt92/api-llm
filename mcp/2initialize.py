@@ -1,15 +1,7 @@
 import requests
-from config.config import *
-from utills.restUtils import printResponse, printStreamResponse
 
-# {
-#   "mcpServers": {
-#     "mcp-server-chart": {
-#       "type": "sse",
-#       "url": "https://mcp.api-inference.modelscope.net/3ad34471ffb244/sse"
-#     }
-#   }
-# }
+from config.config import *
+from utills.restUtils import printStreamResponse
 
 requestBody = {
     "jsonrpc": "2.0",
