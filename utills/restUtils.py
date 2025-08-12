@@ -4,6 +4,7 @@ import requests
 
 
 def printStreamResponse(response, pretty=True):
+    print('\n' + response.request.method + ' ' + response.request.url + '\n')
     print('Status Code: %s' % response.status_code)
     headersDict = dict(response.headers)
     print('Headers:', json.dumps(headersDict, indent=2 if pretty else None))
@@ -15,6 +16,7 @@ def printStreamResponse(response, pretty=True):
 
 
 def printResponse(response: requests.Response, pretty=True):
+    print('\n' + response.request.method + ' ' + response.request.url + '\n')
     print('Status Code: %s' % response.status_code)
     headersDict = dict(response.headers)
     print('Headers:', json.dumps(headersDict, indent=2 if pretty else None))
