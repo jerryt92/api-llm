@@ -7,7 +7,7 @@ def printStreamResponse(response, pretty=True):
     print('\n' + response.request.method + ' ' + response.request.url + '\n')
     print('Status Code: %s' % response.status_code)
     headersDict = dict(response.headers)
-    print('Headers:', json.dumps(headersDict, indent=2 if pretty else None))
+    print('Headers:', json.dumps(headersDict, indent=2 if pretty else None, ensure_ascii=False))
     print('Events:')
     for line in response.iter_lines():
         if line:
@@ -19,8 +19,8 @@ def printResponse(response: requests.Response, pretty=True):
     print('\n' + response.request.method + ' ' + response.request.url + '\n')
     print('Status Code: %s' % response.status_code)
     headersDict = dict(response.headers)
-    print('Headers:', json.dumps(headersDict, indent=2 if pretty else None))
+    print('Headers:', json.dumps(headersDict, indent=2 if pretty else None, ensure_ascii=False))
     if 'Content-Type' in headersDict and 'application/json' in headersDict['Content-Type']:
-        print('Body:', json.dumps(response.json(), indent=2 if pretty else None))
+        print('Body:', json.dumps(response.json(), indent=2 if pretty else None, ensure_ascii=False))
     else:
         print('Body:', response.text)
