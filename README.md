@@ -1,2 +1,2 @@
 # api-llm
-An api test scripts, support OpenAI API and Ollama API.
+An api test scripts for the LLM ecosystem (such as OpenAI API, Ollama API, MCP).
