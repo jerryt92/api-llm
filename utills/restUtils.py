@@ -20,7 +20,8 @@ def printResponse(response: requests.Response, pretty=True):
     print('Status Code: %s' % response.status_code)
     headersDict = dict(response.headers)
     print('Headers:', json.dumps(headersDict, indent=2 if pretty else None, ensure_ascii=False))
-    if 'Content-Type' in headersDict and 'application/json' in headersDict['Content-Type']:
-        print('Body:', json.dumps(response.json(), indent=2 if pretty else None, ensure_ascii=False))
-    else:
+    try:
+        json_body = response.json()
+        print('Body:', json.dumps(json_body, indent=2 if pretty else None, ensure_ascii=False))
+    except ValueError:
         print('Body:', response.text)
