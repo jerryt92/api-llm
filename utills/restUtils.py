@@ -30,6 +30,7 @@ def printStreamResponse(response, pretty=True):
 def printResponse(response: requests.Response, pretty=True):
     print('\n' + response.request.method + ' ' + response.request.url + '\n')
     print('Request:\n')
+    print('Headers:', json.dumps(dict(response.request.headers), indent=2 if pretty else None))
     request_body = response.request.body
     if isinstance(request_body, bytes):
         try:
