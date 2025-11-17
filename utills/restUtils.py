@@ -27,7 +27,9 @@ def printStreamResponse(response, pretty=True):
             print(decoded_line)
 
 
-def printResponse(response: requests.Response, pretty=True):
+def printResponse(response: requests.Response, pretty=True, curlInfo=False):
+    if curlInfo:
+        printCurlInfo(response)
     print('\n' + response.request.method + ' ' + response.request.url + '\n')
     print('Request:\n')
     print('Headers:', json.dumps(dict(response.request.headers), indent=2 if pretty else None))
@@ -49,3 +51,22 @@ def printResponse(response: requests.Response, pretty=True):
         print('Body:', json.dumps(json_body, indent=2 if pretty else None, ensure_ascii=False))
     except ValueError:
         print('Body:', response.text)
+
+
+def printCurlInfo(response: requests.Response):
+    curl_command = f"curl -X {response.request.method}"
+    # Add headers
+    for key, value in response.request.headers.items():
+        curl_command += f" -H '{key}: {value}'"
+    # Add body if present
+    if response.request.body:
+        body = response.request.body
+        if isinstance(body, bytes):
+            try:
+                body = body.decode('utf-8')
+            except UnicodeDecodeError:
+                body = body.decode('utf-8', errors='replace')
+        curl_command += f" -d '{body}'"
+    curl_command += f" '{response.request.url}'"
+    print("Curl Command:\n")
+    print(curl_command)
