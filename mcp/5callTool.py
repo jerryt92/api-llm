@@ -7,9 +7,10 @@ requestBody = {
     "id": 'py-mcp-test',
     "method": "tools/call",
     "params": {
-        "name": "get-stations-code-in-city",
+        "name": "bing_search",
         "arguments": {
-            "city": "深圳"
+            "query": "MCP 协议",
+            "num_results": 5
         }
     }
 }

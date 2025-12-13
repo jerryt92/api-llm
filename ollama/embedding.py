@@ -2,14 +2,16 @@ from config.config import *
 from utills.restUtils import *
 
 requestBody = {
-    "model": "nomic-embed-text:latest",
+    "model": "qllama/bge-small-en-v1.5:latest",
     "input": [
-    "今天要不要提前出门",
-    "打印结果",
-    "今天人多吗"
-  ]
+        "Hello Milvus",
+    ]
 }
 
 if __name__ == '__main__':
     response = requests.post(baseUrl + '/api/embed', headers=headers, json=requestBody)
-    printResponse(response)
+    printResponse(response, pretty=False)
+    json_body = response.json()
+    response = json.dumps(json_body)
+    dimension = len(json_body['embeddings'][0])
+    print(f"dimension: {dimension}")

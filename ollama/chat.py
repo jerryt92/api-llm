@@ -22,7 +22,7 @@ from utills.restUtils import printStreamResponse
 #     "stream": True,
 #     "keepAlive": 3600
 # }
-requestBody = {"model": "qwen3:14b", "messages": [{"role": "system",
+requestBody = {"model": "qwen3:14b-q8_0", "messages": [{"role": "system",
                                                    "content": "你是Jrag AI，你是一个运行于用户Mac上，可以根据用户指令，并可以根据需要调用工具的AI助手。\n/no_think"},
                                                   {"role": "user", "content": "我电脑的磁盘空间是多少\n\n"}],
                "stream": True, "keepAlive": "3600", "tools": [{"type": "function",

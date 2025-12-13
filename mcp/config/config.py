@@ -9,9 +9,9 @@
 #   }
 # }
 baseUrl = 'https://mcp.api-inference.modelscope.net'
-sseEndpoint = '/xxx/sse/'
+sseEndpoint = '/c0d439f3be7e4d/sse/'
 # 此处填入1session.py返回的sessionId
-sessionId = '6e28e0673c254d7e9060e4aae08a4ef8'
+sessionId = '445873c4d7f74807bd7746746aee8387'
 headers = {
     "Accept": "application/json, text/event-stream",
     "Content-Type": "application/json",
